@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 function CardItem({ data }) {
   const id = useParams();
 
-  useEffect(() => {});
 
   return (
     <>
