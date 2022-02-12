@@ -8,9 +8,9 @@ function LongCard({ data }) {
   return (
     <>
       {data.map((list) => (
-        <Card key={list.id} className="main-header_card">
+        <Card key={list.id} className="main-header_longCard">
           <img className="img" src={list.img} alt="" />
-          <CardContent className="main-card">
+          <CardContent className="long-card">
             <div>
               <p className="card-item">{list.javaScript}</p>
               <p className="card-date">{list.date}</p>

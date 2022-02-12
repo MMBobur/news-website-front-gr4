@@ -1,5 +1,4 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
 import LongCard from "../../components/longCard";
 
 const data = [
@@ -32,8 +31,7 @@ const data = [
   },
 ];
 
-function Home({ setData }) {
-  setData(data);
+function Home() {
   return (
     <div>
       <LongCard data={data} />
