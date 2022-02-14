@@ -1,0 +1,17 @@
+.categories__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid #f6f6f6;
+  width: 400px;
+}
+.categories__container h2 {
+  color: #185069;
+}
+.categories__container p {
+  background-color: yellow;
+  color: white;
+  padding: 1px 10px;
+  margin-top: 25px;
+  font-size: 20px;
+}
