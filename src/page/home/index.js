@@ -7,23 +7,32 @@ import Footer from "../../components/footer/Footer";
 import LongCard from "../../components/longCard";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import service from "../../service/category";
+import serviceCategiry from "../../service/category";
+import serviceNews from "../../service/news";
 
 function Home() {
   const [categoryData, setCategoryData] = useState([]);
+  const [newsData, setNewsData] = useState([]);
   useEffect(() => {
-    service
+    serviceCategiry
       .getCounted()
       .then((resp) => {
         setCategoryData(resp[0]);
       })
       .catch((error) => console.log(error));
+    serviceNews
+      .getAll()
+      .then((resp) => {
+        setNewsData(resp);
+      })
+      .catch((error) => {
+        console.log("error: ", error);
+      });
   }, []);
 
   return (
     <div style={{ marginLeft: "8%", marginRight: "5%" }}>
       <Navbar data={categoryData} />
-
       <h2
         style={{
           paddingTop: "3%",
@@ -37,7 +46,7 @@ function Home() {
       </h2>
 
       <div className="card">
-        <CardComp />
+        <CardComp data={newsData} />
       </div>
       <h2
         style={{
@@ -50,11 +59,10 @@ function Home() {
       >
         Most Read
       </h2>
-
       <Grid container spacing={2}>
         <Grid item xl={8}>
           <div className="longcard">
-            <LongCard />
+            <LongCard data={newsData} />
             <Button
               variant="contained"
               style={{
