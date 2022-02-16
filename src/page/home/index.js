@@ -60,33 +60,26 @@ function Home() {
       >
         Most Read
       </h2>
-      <div
-        style={{
-          displey: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <div className="longcard">
+      <div>
+        <div>
           <LongCard />
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "#26323f",
+              marginLeft: 300,
+              marginTop: 20,
+              width: 160,
+              borderRadius: 0,
+              fontWeight: 600,
+              fontSize: 13,
+              color: "whitesmoke",
+            }}
+          >
+            Load More
+          </Button>
         </div>
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: "#26323f",
-            marginLeft: 300,
-            marginTop: 20,
-            width: 160,
-            borderRadius: 0,
-            fontWeight: 600,
-            fontSize: 13,
-            color: "whitesmoke",
-          }}
-        >
-          Load More
-        </Button>
-        <div
-          style={{ width: "25%", position: "absolute", top: 1050, left: 900 }}
-        >
+        <div style={{ width: "24%" }}>
           <h1
             style={{
               fontWeight: 600,
