@@ -24,8 +24,12 @@ const CardComp = () => {
 
   return (
     <>
-      {data.map((item, index) => (
-        <div key={item.id} style={{ dispay: "flex", flexDirection: "row" }}>
+      {data.map((item) => (
+        <div
+          key={item.id}
+          style={{ dispay: "flex", flexDirection: "row" }}
+          onClick={() => console.log(item.id)}
+        >
           <Card
             key={item.id}
             sx={{

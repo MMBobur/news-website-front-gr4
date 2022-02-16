@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardComp from "../../components/card";
 import Navbar from "../../components/navbar";
 import "../../components/card/index.css";
@@ -7,33 +7,22 @@ import Footer from "../../components/footer/Footer";
 import LongCard from "../../components/longCard";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import service from "../../service/category";
+
 function Home() {
-  const FakeData = [
-    {
-      title: "Python",
-      color: "#177604",
-      count: 45,
-    },
-    {
-      title: "Web Design",
-      color: "#0049db",
-      count: 45,
-    },
-    {
-      title: "JavaScript",
-      color: "#f0e800",
-      count: 45,
-    },
-    {
-      title: "CSS",
-      color: "#d10000",
-      count: 45,
-    },
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    service
+      .getCounted()
+      .then((resp) => {
+        setData(resp[0]);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div style={{ marginLeft: "8%", marginRight: "5%" }}>
-      <Navbar />
+      <Navbar data={data} />
 
       <h2
         style={{
@@ -92,18 +81,18 @@ function Home() {
             >
               Categories
             </h1>
-            {FakeData.map((item, index) => (
+            {data.map((item, index) => (
               <Categories
                 key={index}
-                title={item.title}
+                title={item.name}
                 color={item.color}
-                count={item.count}
+                count={item.news_count}
               />
             ))}
           </div>
         </Grid>
       </Grid>
-      <Footer />
+      <Footer data={data} />
     </div>
   );
 }
