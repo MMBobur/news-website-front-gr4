@@ -6,6 +6,7 @@ import Categories from "../../components/categories";
 import Footer from "../../components/footer/Footer";
 import LongCard from "../../components/longCard";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 function Home() {
   const FakeData = [
     {
@@ -60,51 +61,48 @@ function Home() {
       >
         Most Read
       </h2>
-      <div
-        style={{
-          displey: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <div className="longcard">
-          <LongCard />
-        </div>
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: "#26323f",
-            marginLeft: 300,
-            marginTop: 20,
-            width: 160,
-            borderRadius: 0,
-            fontWeight: 600,
-            fontSize: 13,
-            color: "whitesmoke",
-          }}
-        >
-          Load More
-        </Button>
-        <div
-          style={{ width: "25%", position: "absolute", top: 1050, left: 900 }}
-        >
-          <h1
-            style={{
-              fontWeight: 600,
-              color: "#26323f",
-            }}
-          >
-            Categories
-          </h1>
-          {FakeData.map((item, index) => (
-            <Categories
-              key={index}
-              title={item.title}
-              color={item.color}
-              count={item.count}
-            />
-          ))}
-        </div>
-      </div>
+      <Grid container spacing={2}>
+        <Grid item xl={8}>
+          <div className="longcard">
+            <LongCard />
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#26323f",
+                marginLeft: 300,
+                marginTop: 20,
+                width: 160,
+                borderRadius: 0,
+                fontWeight: 600,
+                fontSize: 13,
+                color: "whitesmoke",
+              }}
+            >
+              Load More
+            </Button>
+          </div>
+        </Grid>
+        <Grid item xl={4}>
+          <div>
+            <h1
+              style={{
+                fontWeight: 600,
+                color: "#26323f",
+              }}
+            >
+              Categories
+            </h1>
+            {FakeData.map((item, index) => (
+              <Categories
+                key={index}
+                title={item.title}
+                color={item.color}
+                count={item.count}
+              />
+            ))}
+          </div>
+        </Grid>
+      </Grid>
       <Footer />
     </div>
   );
