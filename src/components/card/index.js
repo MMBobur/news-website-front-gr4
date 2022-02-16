@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardActionArea,
@@ -26,27 +25,24 @@ const CardComp = () => {
   return (
     <>
       {data.map((item, index) => (
-        <div
-          key={item.id}
-          style={{ dispay: "flex", flexDirection: "row", padding: 50 }}
-        >
+        <div key={item.id} style={{ dispay: "flex", flexDirection: "row" }}>
           <Card
             key={item.id}
             sx={{
-              width: 300,
-              height: 400,
+              width: 365,
+              height: 350,
             }}
           >
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="200"
+                height="220"
                 image={item.image}
                 alt="image"
               />
               <CardContent>
                 <Typography
-                  style={{ color: "#1976c0" }}
+                  style={{ color: "#26323f" }}
                   gutterBottom
                   variant="h5"
                   component="div"
@@ -56,24 +52,25 @@ const CardComp = () => {
                 <p
                   style={{
                     position: "absolute",
-                    color: "#1976c0",
-                    fontSize: 18,
-                    top: 208,
+                    color: "#26323f",
+                    fontSize: 14,
+                    top: 225,
                     right: 20,
                   }}
                 >
-                  {item.data}
+                  March 27, 2021
+                  {/* {item.data} */}
                 </p>
 
                 <Typography
-                  style={{ color: "#1976c0" }}
+                  style={{ color: "#26323f" }}
                   variant="body2"
                   color="text.secondary"
                 >
                   {item.text}
                 </Typography>
                 <Typography
-                  style={{ color: "#1976c0" }}
+                  style={{ color: "#26323f" }}
                   variant="body2"
                   color="text.secondary"
                 >
@@ -89,4 +86,3 @@ const CardComp = () => {
 };
 
 export default CardComp;
-
