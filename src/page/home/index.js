@@ -10,19 +10,19 @@ import Grid from "@mui/material/Grid";
 import service from "../../service/category";
 
 function Home() {
-  const [data, setData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
   useEffect(() => {
     service
       .getCounted()
       .then((resp) => {
-        setData(resp[0]);
+        setCategoryData(resp[0]);
       })
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div style={{ marginLeft: "8%", marginRight: "5%" }}>
-      <Navbar data={data} />
+      <Navbar data={categoryData} />
 
       <h2
         style={{
@@ -50,6 +50,7 @@ function Home() {
       >
         Most Read
       </h2>
+
       <Grid container spacing={2}>
         <Grid item xl={8}>
           <div className="longcard">
@@ -81,7 +82,7 @@ function Home() {
             >
               Categories
             </h1>
-            {data.map((item, index) => (
+            {categoryData.map((item, index) => (
               <Categories
                 key={index}
                 title={item.name}
@@ -92,7 +93,7 @@ function Home() {
           </div>
         </Grid>
       </Grid>
-      <Footer data={data} />
+      <Footer data={categoryData} />
     </div>
   );
 }
