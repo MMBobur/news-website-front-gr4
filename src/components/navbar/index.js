@@ -1,23 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
 
-export default function Navbar() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/category`)
-      .then((v) => {
-        setData(v.data);
-      })
-      .catch((err) => alert(err));
-  }, []);
+export default function Navbar({ data }) {
   return (
     <div
       style={{
-        height: "70px",
+        height: "74px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",

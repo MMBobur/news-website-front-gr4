@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -6,13 +7,25 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import img from "../../assets/2.jpg";
-import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import serviceNews from "../../service/news.js";
 
 const OneCard = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const id = useParams();
+  const [oneCard, setOneCard] = useState([]);
+
+  useEffect(() => {
+    serviceNews
+      .getOne(id.id)
+      .then((resp) => {
+        setOneCard(resp);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const GoHome = () => {
     navigate("/");
@@ -37,7 +50,12 @@ const OneCard = () => {
           }}
         >
           <CardActionArea>
-            <CardMedia component="img" height="350" image={img} alt="image" />
+            <CardMedia
+              component="img"
+              height="350"
+              image={oneCard.image}
+              alt="image"
+            />
             <CardContent>
               <Typography
                 style={{ color: "#26323f" }}
@@ -45,7 +63,7 @@ const OneCard = () => {
                 variant="h5"
                 component="div"
               >
-                Lorem ipsum dolor sit , adipisicing elit.
+                {oneCard.title}
               </Typography>
               <p
                 style={{
@@ -57,7 +75,6 @@ const OneCard = () => {
                 }}
               >
                 March 27, 2021
-                {/* {data.data} */}
               </p>
 
               <Typography
@@ -65,7 +82,7 @@ const OneCard = () => {
                 variant="body2"
                 color="text.secondary"
               >
-                Lorem ipsum dolor sit , adipisicing elit.
+                {oneCard.text}
               </Typography>
             </CardContent>
           </CardActionArea>
