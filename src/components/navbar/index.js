@@ -2,7 +2,10 @@ import React from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
 
+import {useNavigate} from 'react-router-dom'
+
 export default function Navbar({ data }) {
+  const  navigate = useNavigate();
   return (
     <div
       style={{
@@ -21,7 +24,10 @@ export default function Navbar({ data }) {
         </span>
         <span>
           {data.map((item) => (
+    
             <span
+            onClick={() => navigate(`news/${item.id}`)}
+
               key={item.id}
               style={{
                 padding: " 23px 20px",
@@ -34,6 +40,7 @@ export default function Navbar({ data }) {
                 color: "#26323f",
               }}
             >
+              
               {item.name}
             </span>
           ))}
