@@ -6,13 +6,18 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const LongCard = ({ data }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div style={{ dispay: "flex", flexDirection: "row" }}>
         {data.map((item, index) => (
           <Card
+          onClick={() => navigate(`/post/${item.id}`)}
             key={index}
             sx={{
               borderRadius: 0,

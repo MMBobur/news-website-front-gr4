@@ -18,6 +18,7 @@ function Home() {
       .getCounted()
       .then((resp) => {
         setCategoryData(resp[0]);
+        
       })
       .catch((error) => console.log(error));
     serviceNews
@@ -28,6 +29,7 @@ function Home() {
       .catch((error) => {
         console.log("error: ", error);
       });
+
   }, []);
 
   return (

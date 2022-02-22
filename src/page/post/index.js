@@ -55,8 +55,10 @@ const OneCard = () => {
               height="350"
               image={oneCard.image}
               alt="image"
-            />
+              />
             <CardContent>
+              <div style={{float: "right"}}> March 27, 2021</div>
+              <div style={{clear: "both"}}></div>
               <Typography
                 style={{ color: "#26323f" }}
                 gutterBottom
@@ -74,7 +76,6 @@ const OneCard = () => {
                   right: 20,
                 }}
               >
-                March 27, 2021
               </p>
 
               <Typography
